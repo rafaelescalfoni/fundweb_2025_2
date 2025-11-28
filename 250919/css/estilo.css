@@ -1,0 +1,83 @@
+main, div {
+    border: 1px solid #000;
+}
+
+main {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+div {
+    
+    width: 300px;
+}
+
+nav {
+    background-color: #aaa;
+}
+
+ul {
+    border:#f00 solid 1px;
+}
+
+nav ul {
+    list-style: none;
+    padding-left: 0;
+    height: 100px;
+    display: flex;   
+    flex-flow: row wrap; /*props direction e wrap em um só*/
+    justify-content: space-evenly;    
+    gap:5px;
+    align-items: flex-start;
+    align-content: stretch;
+    flex-grow: 2;
+}
+
+nav li {
+   /* border: #00f solid 1px;*/
+}
+
+table,td,th {
+    border: 1px solid #000;
+}
+
+
+a:link{
+    text-decoration: none;
+
+}
+
+a:visited{
+    color:chartreuse;
+}
+
+a:active{
+    font-size: 3em;
+}
+
+a:hover{
+    font-size: .5em;
+}
+
+tr:last-child {
+    background-color: #aaf;
+}
+
+tr:nth-child(2n) {
+    background-color: #aaa;
+}
+
+input:focus {
+    border:#f00 outset 5px;
+}
+
+input:checked{
+    font-size: 2em;
+    background-color: aquamarine;
+}
+
+
+p::first-letter {
+    font-size: 3em;
+    float: left;
+}

@@ -1,0 +1,31 @@
+.popup {
+    border: #666 solid 1px;
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px #333;
+    
+}
+
+.hidden {
+    visibility:hidden;
+    transition: all .5s;
+}
+
+.visible {
+    visibility:visible;
+    transition: all .5s;
+}
+
+.popup__titulo{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.popup__descricao{
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+} 
+.popup--erro{
+    color:#800;
+    font-weight: bold;
+}

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <title>Fundamentos da Web - exercício</title>
+    <style>
+        * {
+    font-family: Roboto, Helvetica, sans-serif;
+}
+body {
+    background-color: #ddd;
+}
+
+header, main {
+    width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 3px 5px 2px #ccc;
+    padding: 20px 10px;
+}
+
+main {
+    min-height: 80vh;
+}
+header {border-radius: 15px 15px 0px 0;}
+header img {
+    width: 150px;
+    height: 150px;
+    float:left;
+    margin-right:25px
+}
+header h1 {
+    font-size: 1.2em;
+    margin: 0;
+}
+header h3 {
+    margin: 5px 0 10px;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.0em;
+}
+header h4 {
+    margin:5px 0;
+    font-weight: normal;
+    font-size: 0.75em;
+}
+main h4{
+    text-align: center;
+}
+main >	p {
+    font-size:0.8em;
+    margin-left: 15px;	
+}
+main li {
+    margin-bottom: 20px;
+    margin-right: 15px;
+    line-height: 1.2em;
+}
+article {
+    background-color: #ddd;
+    font-size: 0.8em;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    line-height: 1.2em;	
+}
+.destaque {
+    background-color: #ff0;
+    padding: 2px;
+    font-weight: bold;
+}
+
+label {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+table, table td, table th{
+    border:1px solid #000;
+    font-size:0.85em;
+}
+
+table td, table th {
+    padding: 1px 10px;
+}
+
+table tr:nth-child(2n) {
+    background-color:#ddd;
+}
+    </style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">SharePoint App</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">1200.00000000000</mso:Order>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:_ColorTag msdt:dt="string"></mso:_ColorTag>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">SharePoint App</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ReferenceId msdt:dt="string"></mso:ReferenceId>
+<mso:ContentTypeId msdt:dt="string">0x010100C8FC54EE3217B74B89DFD54499C8C59C</mso:ContentTypeId>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+<mso:_ColorHex msdt:dt="string"></mso:_ColorHex>
+<mso:_Emoji msdt:dt="string"></mso:_Emoji>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+    <header>
+		<img src="data:image/jpeg;base64,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" alt="Centro Federal de Educação Tecnológica do Rio de Janeiro Celso Suckow da Fonseca - CEFET/RJ">
+		<h1>Centro Federal de Educação Tecnológica do Rio de Janeiro - Celso Suckow da Fonseca</h1>
+		<h3>Campus Nova Friburgo</h3>
+		<h4>Bacharelado em Sistemas de Informação</h4>
+		<h4>Professor Rafael Escalfoni</h4>
+	</header>
+	<main>
+		<h4>Fundamentos da Web - Exercícios</h4>
+        <p>
+			Leia os enunciados das questões com atenção. Responda à tarefa no MS Teams com este arquivo completo. 
+		</p>
+		<p>
+			Não altere o nome das variáveis no seu script. Seu script será testado nesta página, sem adaptações.
+		</p>
+
+		<p>
+			Bons estudos!
+		</p>
+	
+		<ol>
+			<li> <h5>Computador de bordo</h5>
+                <p>Um novo modelo de carro, super econômico foi lançado. Ele faz 20 km com 1 litro de combustível, considere cada litro de combustível custa R$ 7,00.</p>
+                <p>
+                    Faça um programa que pergunte ao usuário quanto de dinheiro ele tem e em seguida diga quantos litros de combustível ele pode comprar e quantos quilômetros o carro consegue andar com este tanto de combustível.
+                </p>
+                <p>Seu script será usado no computador de bordo do carro.
+                </p>
+                <fieldset>
+                    <legend>Painel</legend>
+                    <label>Informe quantos R$ dispõe</label>
+                    <input id="q01-dinheiro" type="text" placeholder="999.99">
+                    <button id="q01-executar">Calcular</button>
+                    <ul id="q01-result">
+                        <!-- resposta aqui
+                            <li>Você abastecerá XYZ litros</li>
+                            <li>Sua autonomia é de zzzz quilômetros</li>
+                        -->
+                    </ul>
+                </fieldset>
+            </li>
+            <li> <h5>Calculadora de IMC</h5>
+                <p>O índice de massa corpórea (IMC) é o cálculo que demonstra se o indivíduo está ou não em seu peso ideal. Esse cálculo é importante para avaliar os riscos de obesidade e encontrar seu peso ideal. Segundo o modelo, pessoas com IMC </p>
+                <table>
+                    <tr>
+                        <th>Intervalos</th>
+                        <th>Interpretação</th>
+                    </tr>
+                    <tr>
+                        <td>abaixo de 18.5</td>
+                        <td>abaixo do peso</td>
+                    </tr>
+                    <tr>
+                        <td>entre 18.5 e 24.9</td>
+                        <td>com peso normal</td>
+                    </tr>
+                    <tr>
+                        <td>entre 25.0 e 29.9</td>
+                        <td>levemente acima do peso</td>
+                    </tr>
+                    <tr>
+                        <td>entre 30.0 e 34.9</td>
+                        <td>Obesidade grau I</td>
+                    </tr>
+                    <tr>
+                        <td>entre 35.0 e 39.9</td>
+                        <td>Obesidade grau II (severa)</td>
+                    </tr>
+                    <tr>
+                        <td>acima de 40</td>
+                        <td>Obesidade grau III (mórbida)</td>
+                    </tr>
+                </table>
+                <p>
+                    Implemente a calculadora de IMC abaixo
+                </p>
+                <p>IMC = peso/(altura ^ 2)</p>
+                <fieldset>
+                    <legend>Calculadora de IMC</legend>
+                    <label>Informe o peso (KG)</label>
+                    <input id="q02-peso" type="text" placeholder="999.99">
+                    <label>Informe a altura (m)</label>
+                    <input id="q02-altura" type="text" placeholder="9.99">
+                    <button id="q02-executar">Calcular</button>
+                    <ul id="q02-result">
+                        <!-- resposta aqui
+                            <li>Seu IMC é zzz</li>
+                            <li>Você está na faixa: "abaixo do peso"</li>
+                        -->
+                    </ul>
+                </fieldset>
+            </li>
+            <li>
+                <h5>Cálculo de probabilidades</h5>
+                <p>A probabilidade de dar um valor em um dado é 1/6 (uma em 6). Faça um script em JavaScript que simule 1 milhão de lançamentos de dados e mostre a frequência que deu para cada número.
+                </p>
+                <p>
+                Ao apertar o botão "Simular", seu programa deverá realizar 1 milhão de lançamentos aleatórios e contabilizar a frequência para cada face do dado. 
+                </p>
+                <fieldset>
+                    <legend>Simulador</legend>
+                    <button id="q03-executar">Simular</button>
+                    <p>Resposta:</p>
+                    <table>
+                        <tr>
+                            <th>Face</th>
+                            <th>Ocorrências</th>
+                            <th>Frequência</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td class="face-ocorr-1">160223<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                            <td class="face-freq-1">16.02%<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="face-ocorr-2">169021<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                            <td class="face-freq-2">16.90%<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="face-ocorr-3">171911<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                            <td class="face-freq-3">17.19%<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="face-ocorr-4">162888<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                            <td class="face-freq-4">16.29%<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="face-ocorr-5">165017<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                            <td class="face-freq-5">16.50%<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td class="face-ocorr-6">171940<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                            <td class="face-freq-6">17.19%<!-- substitua o valor exemplo pela sua resposta aqui --></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </li>
+            <li> 
+                <h5>Inversor de nomes</h5>
+                <p>Faça um programa que peça ao usuário para digitar vários nomes. Ao mandar executar, seu programa deve exibir os nomes digitados invertidos (da última letra para a primeira).
+                </p>
+                <fieldset>
+                    <legend>Nomes</legend>
+                    <label>Insira um nome</label>
+                    <input id="q04-nome" type="text" placeholder="Digite um nome">
+                    <button id="q04-add">Adicionar nome</button>
+                    <h6>Lista de Nomes Digitados</h6>
+                    <ul id="q04-nomes">
+                        <li>Ana</li>
+                        <li>Paulo</li>
+                        <!--<li>Insira os nomes digitados nessa lista</li> -->
+                    </ul>
+                    <button id="q04-executar">Inverter</button>
+                    <h6>Lista de Nomes Invertidos</h6>
+                    <ul id="q04-nomes-invertidos">
+                        <!--<li>Insira os nomes invertidos nessa lista</li> -->
+                    </ul>
+                </fieldset>
+            </li>
+            <li>
+                <h5>Palíndromo</h5>
+                <p>Faça um programa que verifique se uma palavra digitada é um palíndromo. 
+                </p>
+                <p><em>Um palíndromo é uma palavra que quando invertida tem a mesma escrita: ARARA, OVO, ANA...</em>
+                </p>
+                <fieldset>
+                    <legend>Palindromista</legend>
+                    <label>Digite uma palavra</label>
+                    <input id="q05-palavra" type="text" placeholder="Digite uma palavra">
+                    <button id="q05-executar">Testa Palíndromo</button>
+                    <p id="q05-result"></p>
+                </fieldset>
+            </li>
+            
+        </ol>
+    </main>
+</body>
+<script>
+const btn01 = document.querySelector("#q01-executar")
+const btn02 = document.querySelector("#q02-executar")
+const btn03 = document.querySelector("#q03-executar")
+const btn04 = document.querySelector("#q04-executar")
+const btn05 = document.querySelector("#q05-executar")
+
+/*****************************************
+ * QUESTÃO 01
+ */
+
+/**
+ * Função que retorna a quantidade de dinheiro digitada pelo usuário
+ */
+const getDinheiro = () => parseFloat(document.querySelector("#q01-dinheiro").value) || 0
+
+/**
+ * Função que calcula a quantidade de combustivel comprada
+ * @param dinheiro
+ * @return litros
+ * obs: cada litro custa 7 reais para o exemplo
+ * o valor inicial é só para testes
+ */
+const calcLitrosCombustivel = dinheiro => dinheiro / 7
+
+/**
+ * função que retorna a quantidade de km que o carro conseguirá percorrer
+ * @param litros - quantidade de litros comprados
+ * @return km - de autonomia do carro
+ */
+const calcAutonomia = litros => litros * 20
+
+const respondeQuestao01 = (litros, autonomia) => {
+    const listaResp = document.querySelector("#q01-result")
+    const liResp = `<li>Você abastecerá ${litros}l</li>
+                    <li>Sua autonomia é de ${autonomia}km</li>`
+    listaResp.innerHTML = liResp
+}
+
+const executa01 = () => {
+    const dinheiro = getDinheiro()
+    const litros = calcLitrosCombustivel(dinheiro)
+    const autonomia = calcAutonomia(litros)
+
+    respondeQuestao01(litros, autonomia)
+}
+
+
+
+btn01.addEventListener("click", executa01)
+
+/*****************************************
+ * QUESTÃO 02
+ */
+
+/**
+ * Função que retorna o PESO digitado pelo usuário
+ */
+const getPeso = () => parseFloat(document.querySelector("#q02-peso").value) || 0
+
+/**
+ * Função que retorna a ALTURA digitada pelo usuário
+ */
+const getAltura = () => parseFloat(document.querySelector("#q02-altura").value) || 0
+
+const calcIMC = (peso, altura) => peso / (altura**2)
+
+const getFaixa = imc => {
+    if (imc<18.5) return "Abaixo do peso"
+    if (imc>=18.5 && imc<25) return "Peso normal"
+    if (imc>=25 && imc<30) return "Levemente acima do peso"
+    if (imc>=30 && imc<35) return "Obesidade grau I"
+    if (imc>=35 && imc<40) return "Obesidade grau II (severa)"
+    return "Obesidade grau III (mórbida)"
+}
+
+const respondeQuestao02 = (faixa, imc) => {
+    const listaResp = document.querySelector("#q02-result")
+    const liResp = `<li>Seu IMC é ${imc}</li>
+                    <li>Você está na faixa: ${faixa}</li>`
+    listaResp.innerHTML = liResp
+}
+
+
+btn02.addEventListener("click", () => {
+    const altura = getAltura()
+    const peso = getPeso()
+
+    const imc = calcIMC(peso, altura)
+    const faixa = getFaixa(imc)
+     console.log(imc)
+
+    respondeQuestao02(faixa, imc)
+})
+
+/*****************************************
+ * QUESTÃO 03
+ */
+
+const lancadorDados = () => Math.ceil(Math.random()*6)
+
+const contaOcorrencia = (NUM_LANCAMENTOS) => {
+    let lances = [0,0,0,0,0,0] //6 faces do dado 
+    lances.forEach(face=> {
+        face = lancadorDados()
+    })
+    return lances
+}
+
+
+
+btn03.addEventListener("click", () => {
+    const NUM_LANCAMENTOS = 1000000
+    const lances = contaOcorrencia(NUM_LANCAMENTOS)
+    const frequencia = lances.map(posicoes => posicoes/NUM_LANCAMENTOS)
+    
+    //atualize a tabela com seus valores
+    for(let i=0; i<6;i++) {
+        document.querySelector(`.face-ocorr-${i+1}`).textContent = lances[i]
+        document.querySelector(".face-freq-"+(i+1)).textContent = frequencia[i]    
+    }
+})
+
+/*****************************************
+ * QUESTÃO 04
+ */
+const btnAddNome = document.querySelector("#q04-add")
+
+//funcao que retorna o nome digitado
+const getNome = () => document.querySelector("#q04-nome").value
+
+const insereNome = nome => {
+    const listaNomes = document.querySelector("#q04-nomes")
+    //inserir nomes em listaNomes
+}
+
+const inverteNome = nome => {
+    //programe inverte nome aqui
+    return "teste"
+}
+
+// insere nome digitado
+btnAddNome.addEventListener("click", () => {
+    const listaNomes = document.querySelector("#q04-nomes")
+    if(getNome())
+        listaNomes.innerHTML += `<li>${getNome()}</li>`
+})
+
+btn04.addEventListener("click", ()=>{
+    const liNomesDigitados = document.querySelectorAll("#q04-nomes li")
+    const listaInvertido = document.querySelector("#q04-nomes-invertidos")
+
+    //para cada li de liNomesDigitados, inverta e insira em listaInvertido
+    for (let i=0; i<liNomesDigitados.length; i++) {
+        const nome = liNomesDigitados[i].textContent
+        const nomeInvertido = inverteNome(nome)
+        listaInvertido.innerHTML += `<li>${nomeInvertido}</li>`
+    }
+})
+
+/*****************************************
+ * QUESTÃO 05
+ */
+//funcao que retorna o nome digitado
+const getPalavra = () => document.querySelector("#q05-palavra").value
+
+const verificaPalindromo = (palavra) => {
+    //palavra[0] == palavra[palavra.length-1]
+    //palavra[1] == palavra[palavra.length-2] 
+    //palavra[2] == palavra[palavra.length-3] ...
+    // até chegar no meio; se todas iguais, é palíndromo
+    // caso contrário, não
+    return false // programe aqui
+}
+btn05.addEventListener("click", () => {
+    const palavra = getPalavra()
+    const resp = document.querySelector("#q05-result")
+    if(palavra)
+        resp.innerHTML = `A palavra ${palavra} 
+            ${(verificaPalindromo(palavra))?"é":"não é"} 
+            um palíndromo`
+})
+</script>
+</html>

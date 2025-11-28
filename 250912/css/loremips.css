@@ -1,0 +1,162 @@
+* { /* é importante zerar as propriedades default do navegador para evitar confusões*/
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*********************************/
+/* Estilo do header */
+/*********************************/
+header {
+    background-color: rgb(44, 15, 3);
+    color: #fff;
+}
+
+    header h1 { /* h1 que existir no header*/
+        text-align: center;
+        padding-top:50px;
+    }
+
+    header p { /* p's que existirem no header*/
+        margin-bottom: 60px;
+        font-size: .6em;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    header a {
+        color:#fff;
+        text-decoration: none;
+    }
+
+    header li {
+        width: 120px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    header li:first-child {
+        background-color: rgb(227, 17, 52);
+        padding:5px 15px;
+    }
+
+/*********************************/
+/* Estilos do main */
+/*********************************/
+
+.laranja {
+    background-color: rgb(241, 78, 2);
+    color: rgb(44, 15, 3);
+}
+
+    .laranja h2 {
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    .laranja p {
+        width: 500px;
+        margin:auto;
+        padding-bottom:  100px;
+        font-size: .6em;
+        text-align: center;
+        line-height: 2em; /* define o espaçamento entre linhas*/        
+    }
+
+.branca {
+    width: 500px;
+    margin:auto; /* recurso para centralizar contêineres*/
+    background-color: #fff;
+    color: rgb(44, 15, 3);
+}
+
+.col-3 {
+
+    /*não irei mexer na diagramação hoje*/    
+    
+}
+
+.box {
+    width: 160px;   
+    margin-top: 30px;
+    text-align: center;
+}
+
+    .box i {
+        margin:10px 0;
+        color: rgb(108, 79, 7);
+        font-size: 2.5em;
+    }
+
+    .box h3 {
+        margin:20px 0;
+        font-size: .8em;
+        text-transform: uppercase;
+    }
+
+    .box p {
+        margin-bottom: 30px;
+        font-size: .5em;
+        line-height: 2em;
+    }
+
+    .box a {
+        padding:10px 25px;
+        background-color: rgb(227, 17, 52);
+        color:#fff;
+        font-size: .6em;
+        text-transform: uppercase;
+    }
+
+.col-4 h3 {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.col-4 h3+p { /* o sinal de + significa: o p seguinte ao h3  dentro de um elemento com classe col-4 */
+    font-size: .5em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.prod {
+    width: 110px;
+    margin:30px 0 0;
+    text-align: center;
+}
+
+    .prod h4 {
+        margin-bottom: 10px;
+        font-size: .55em;
+        text-transform: uppercase;
+    }
+
+    .prod p {
+        margin-bottom: 30px;
+        font-size: .45em;
+        line-height: 2.5em;
+
+    }
+
+    .prod a {
+        padding:10px 15px;
+        background-color: rgb(227, 17, 52);
+        color:#fff;
+        font-size: .5em;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+footer {
+    padding-top: 80px;
+    background-color: rgb(44, 15, 3);
+    color: #fff;
+    font-size: .5em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+footer a {
+    color: #fff;
+}

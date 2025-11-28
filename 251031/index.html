@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="cabecalho">Introdução ao JavaScript</h1>
+    <!--
+    <form method="post" action="#">
+        <fieldset>
+            <legend>Dados de acesso</legend>
+            <input type="text" name="login" placeholder="Digite seu login">
+            <br>
+            <input type="password" name="senha" placeholder="Digite sua senha">
+            <br>
+            <input type="radio" name="curso" value="m"> Manhã
+            <br>
+            <input type="radio" name="curso" value="t"> Tarde
+            <br>
+            <input type="radio" name="curso" value="n"> Noite
+            <br>
+            <select name="cursoNome">
+                <option value="SI">Sistemas de Informação</option>
+                <option value="FI">Física</option>
+                <option value="TU">Turismo</option>
+            </select>
+        </fieldset>
+        <button> Enviar</button>
+    </form>
+-->
+    <h2>Exercício 1</h2>
+    <p>Faça um programa que receba uma frase e conte o número de vogais digitadas</p>
+    <input type="text" id="frase" placeholder="Digite uma frase">
+    <button id="executar">Executar</button>
+    
+    <div id="resultado">
+
+    </div>
+
+    <h2>Exercício 2</h2>
+    <p>Faça um programa que receba uma frase e conte o número de palavras digitadas</p>
+    <input type="text" id="frase2" placeholder="Digite uma frase">
+    <button id="executar2">Executar</button>
+    
+    <div id="resultado2">
+
+    </div>
+
+    <h2>Exercício 3</h2>
+    <p>Faça um programa que receba uma frase e inverta a frase</p>
+    <input type="text" id="frase3" placeholder="Digite uma frase">
+    <button id="executar3">Executar</button>
+    
+    <div id="resultado3"></div>
+
+    <h2>Exercício 4</h2>
+    <p>Faça um programa que receba uma frase e inverta palavra por palavra. Exemplo: "Lorem ipsum dolor" >> "meroL muspi rolod"</p>
+    <input type="text" id="frase4" placeholder="Digite uma frase">
+    <button id="executar4">Executar</button>
+    
+    <div id="resultado4"></div>
+
+
+
+     <h2>Exercício 5</h2>
+    <p>Faça um programa, que ao clicar no botão, aparece
+um número aleatório entre 0 e 50</p>
+    
+    <button id="executar5">Gerar Número</button>
+    
+    <div id="resultado5"></div>
+
+    <h2>Exercício 6</h2>
+    <p>Faça um programa, que ao clicar no botão, recupera o valor digitado na caixa de texto e mostra a mensagem:</p>
+    <ul>
+        <li>Entre 0 e 10, 10 excluído, mostra “Insuficiente”</li>
+        <li>Entre 10 e 14, 14 excluído, mostra “Bom”</li>
+        <li>Maior que 14, mostra “Muito Bom</li>
+    </ul>
+
+    <input type="text" id="frase6" placeholder="Digite uma frase">
+    <button id="executar6">Testar</button>
+    
+    <div id="resultado6"></div>
+
+    <h2>Exercício 7</h2>
+    <p>Faça um programa, que leia dois números e imprima em uma tabela (gerada dinamicamente) o resultado das operações aritméticas soma, produto, divisão e resto da divisão (%) entre esses números.</p>
+    
+    <p>
+        Exemplo de tabela que deve ser gerada para as entradas 2 e 1.
+
+    </p>
+    <table>
+        <tr>
+            <th>Operação</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>2 + 1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>2 * 1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>2 / 1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>2 % 1</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <input type="text" id="num1" placeholder="Digite um número">
+    <input type="text" id="num2" placeholder="Digite outro número">
+    <button id="executar7">Gerar Tabela</button>
+    
+    <div id="resultado7"></div>
+
+    <h2>Exercício 8</h2>
+    <p>    Faça uma caixa de texto que classifique: </p>
+    <ul>
+        <li>fraca (em vermelho) se só possuir letras minúsculas ou maiúsculas </li>
+        <li>moderada (em laranja) se possuir letras minúsculas e maiúsculas e números </li>
+        <li>forte (em verde) se possuir letras minúsculas e maiúsculas, números e caracteres especiais (@, #, !, $, %, &, *, (, ), -, +, ., =) .</li>
+    </ul>
+
+    <input type="text" id="senha8" placeholder="Digite uma frase">
+    <button id="executar8">Testar Senha</button>
+    
+    <div id="resultado8"></div>
+
+
+    <h2>Exercício 9</h2>
+    <p>    Faça um programa que codifique uma frase usando a estratégia TENIS/POLAR, na qual as letras que apareçam em uma das palavras são intercambiadas </p>
+    <ul>
+        <li>A letra T por P e vice-versa;</li>
+        <li>A letra E por O e vice-versa;</li>
+        <li>A letra N por L e vice-versa;</li>
+        <li>A letra I por A e vice-versa;</li>
+        <li>A letra S por R e vice-versa;</li>
+        <li>As demais letras devem ser mantidas no texto codificado.</li>
+    </ul>      
+    <input type="text" id="frase9" placeholder="Digite uma frase">
+    <button id="executar9">Testar Senha</button>
+    
+    <div id="resultado9"></div>
+    
+</body>
+<script src="./js/script.js"></script>
+</html>

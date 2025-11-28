@@ -1,0 +1,60 @@
+body{
+    /*
+    background-color: beige;
+    background-image: url(../img/friburgo.png);
+    background-repeat: no-repeat; /* repeat-x repeat-y repeat no-repeat*/
+    /*background-position: left center; /*[left right center] [top center bottom];*/
+    /*background-size: 100%;
+    background-attachment: scroll;
+    */
+    background: beige url(../img/friburgo.png) no-repeat scroll left center;
+}
+
+h1 {
+    color:green;    
+}
+
+#introducao {
+    font-style: italic;
+}
+
+.texto-grande, .texto-azul{
+    font-family: Arial;
+}
+
+.texto-grande{
+    font-size: 2em;
+} 
+
+.texto-azul{
+    color:blue;
+}
+
+section p {   /* [seletor ancestral] [seletor descendente]*/
+    background-color: aqua;
+}
+
+.box{
+    /* margin: 50px;  todos os lados*/
+    /* margin: 50px 100px;  [topo e fundo] [esq e dir]*/
+    /* margin: 50px 80px 100px;  [topo] [laterais] [fundo]*/
+    margin: 10px 20px 30px 40px; /* [topo dir fundo esq] */
+    /*
+    margin-left: 100px;
+    margin-right: 150px;
+    margin-bottom:200px;
+    */
+    padding-left:20px;
+    padding-bottom:30px;
+    padding-top:25px;
+    padding-right:50px;
+
+    width: 500px;
+    height: 500px;
+    box-sizing: border-box;
+
+    border: 1px rgba(65, 107, 144,0.5) solid;
+    border-radius: 20px 30px 50px 100px;
+    
+}
+
