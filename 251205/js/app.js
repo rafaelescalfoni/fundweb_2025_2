@@ -19,6 +19,7 @@ const carregarPaises = async () => {
     console.log(dados)
 
 }
+
 carregarPaises()
 
 
