@@ -1,8 +1,6 @@
 
-
-//parametro: ?fields=param => ?fields=name
-
-
+let paises = []
+let paisesFiltrados = []
 /**
  * Função que exibe a lista de paises recuperados na tela
  * @param {*} lista - relação de países que satisfaz alguma condição
@@ -35,26 +33,40 @@ const carregarPaises = async () => {
     // 3. carregar os dados da promises
     const dados = await resposta.json()
 
-    return dados
+    paises = dados
+    paisesFiltrados = paises
 }
 
-const paises = carregarPaises()
+carregarPaises() //destructing
+
+// [["Brasil", "Argentina", "Uruguai"]] //errado
+// precisa "desestruturar" antes
+//(... ["Brasil", "Argentina", "Uruguai"]) => "Brasil", "Argentina", "Uruguai"
 
 
 /**
  * Função que filtra países por nome
  * @param {*} palavra - chave de busca
- * @param {*} paises - lista completa de paises a ser filtrada
  */
-const buscarPorNome = (palavra, paises) => {
+const buscarPorNome = (palavra) => {
 
     const fragMinusculo = palavra.toLowerCase()
 
-    return paises.filter(pais => {
+    return paisesFiltrados.filter(pais => {
         const nomePaisMinusculo = pais.name.common.toLowerCase()
         return nomePaisMinusculo.includes(fragMinusculo) 
     })
 }
+
+/**
+ * Função que filtra países por regiao
+ * @param {*} palavra - chave de busca
+ */
+const buscarPorRegiao = (palavra) => 
+    paises.filter(pais => 
+        pais.region.toLowerCase().includes(palavra.toLowerCase())
+    )
+
 
 const iptCampoBusca = document.querySelector("#campoBusca")
 
@@ -62,18 +74,19 @@ iptCampoBusca.addEventListener("keyup", async () => {
     //recebe a palavra de busca
     const palavra = iptCampoBusca.value
     
-    //carregar os paises
-    const paises = await carregarPaises()
-
     //chamar a função que filtra
-    const paisesFiltrados = buscarPorNome(palavra, paises)
+    paisesFiltrados = buscarPorNome(palavra)
 
     //exibir os paises
     exibirPaises(paisesFiltrados)
 })
 
+const ordenarPorNome = () => {
+    paisesFiltrados = paises.sort((p1, p2) => p1.name.common > p2.name.common)
+    exibirPaises(paisesFiltrados)
+}
 /*
-ordenarPorNome()
+
 
 ordenarPorPopulacao()
 
@@ -88,11 +101,9 @@ ordenarPorArea()
 const btnOrdenarNome = document.querySelector("#btnOrdenarNome")
 const btnOrdenarPopulacao = document.querySelector("#btnOrdenarPopulacao")
 const btnOrdenarArea = document.querySelector("#btnOrdenarArea")
+const selectBuscaRegiao = document.querySelector("#filtroRegiao")
 
-
-btnOrdenarNome.addEventListener("click", ()=> {
-    console.log("entrou no botao ordenar por nome")
-})
+btnOrdenarNome.addEventListener("click", ordenarPorNome)
 
 btnOrdenarPopulacao.addEventListener("click", ()=> {
     console.log("entrou no botao ordenar por populacao")
@@ -100,4 +111,11 @@ btnOrdenarPopulacao.addEventListener("click", ()=> {
 
 btnOrdenarArea.addEventListener("click", ()=> {
     console.log("entrou no botao ordenar por area")
+})
+
+selectBuscaRegiao.addEventListener("click", ()=>{
+
+    paisesFiltrados = buscarPorRegiao(selectBuscaRegiao.value)
+    //carregar os paises
+    exibirPaises(paisesFiltrados)
 })
