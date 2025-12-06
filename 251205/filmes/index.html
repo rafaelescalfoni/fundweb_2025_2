@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/app.js" defer></script>
+
+</head>
+<body>
+
+  <h1>Movie Explorer</h1>
+
+  <section id="controles">
+    <input id="campoBusca" type="text" placeholder="Buscar filmes...">
+    <button onclick="buscarFilmes()">Buscar</button>
+
+    <select id="filtroTipo" onchange="aplicarFiltros()">
+      <option value="">Todos os Tipos</option>
+      <option value="movie">Filmes</option>
+      <option value="series">Séries</option>
+      <option value="game">Games</option>
+    </select>
+
+    <button onclick="ordenarPorAno()">Ordenar por Ano</button>
+    <button onclick="ordenarPorTitulo()">Ordenar por Título</button>
+  </section>
+
+  <section id="listaFilmes"></section>
+
+  <section id="estatisticas"></section>
+
+</body>
+</html>

@@ -38,3 +38,18 @@ h1 {
   padding: 15px;
   border-radius: 10px;
 }
+
+#popup {
+  position: absolute;
+  top:20px;
+  left:0;
+  background-color: #fff;
+  border: #666 solid 1px;
+  padding: 10px;
+  display: none;
+}
+
+.popupVisivel {
+  display: block;
+  
+}
