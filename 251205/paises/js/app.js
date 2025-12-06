@@ -18,8 +18,10 @@ const carregarPaises = async () => {
     paises = dados
     paisesFiltrados = paises
 }
-
-carregarPaises() //destructing
+//////////////////////////////////////////////////////////////////////////
+// a lista de países é baixada da API uma única vez, ao carregar o site //
+//////////////////////////////////////////////////////////////////////////
+carregarPaises() 
 
 /**
  * Função que filtra países por nome
@@ -42,7 +44,6 @@ const buscarPorRegiao = (palavra) =>
     paises.filter(pais => 
         pais.region.toLowerCase().includes(palavra.toLowerCase())
     )
-
 
 const ordenarPorNome = () => {
     paisesFiltrados = paisesFiltrados.sort((p1, p2) => p1.name.common > p2.name.common)
@@ -88,7 +89,6 @@ const recuperaNomePais = (elemClicado) => {
 
 }
 
-
 /**
  * Função que exibe a lista de paises recuperados na tela
  * @param {*} lista - relação de países que satisfaz alguma condição
@@ -125,7 +125,6 @@ const exibirEstatisticas = () => {
     <p><strong>Total de países exibidos: </strong>${totalPaisesExibidos}</p>
     <p><strong>População total: </strong>${populacaoTotal.toLocaleString()}</p>
     <p><strong>Área total: </strong>${areaTotal.toLocaleString()}</p>`
-
 }
 
 /**
