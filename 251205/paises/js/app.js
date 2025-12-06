@@ -1,26 +1,6 @@
 
 let paises = []
 let paisesFiltrados = []
-/**
- * Função que exibe a lista de paises recuperados na tela
- * @param {*} lista - relação de países que satisfaz alguma condição
- */
-const exibirPaises = lista => {
-    const listaPaises = document.querySelector("#listaPaises")
-
-    const cards = lista.reduce((acum, pais) => {
-        const card = `<div class="pais">
-            <h1>${pais.flag}</h1>
-            <h3>${pais.name.common}</h3>
-            <p><strong>Capital:</strong>${pais.capital}</p>
-            <p><strong>População:</strong>${pais.population.toLocaleString()}</p>
-            </div>`
-        return acum + card
-    },"")
-    listaPaises.innerHTML = cards
-
-    exibirEstatisticas()
-}
 
 /**
  * Função que retorna todos os paises disponibilizados pela API
@@ -32,7 +12,7 @@ const carregarPaises = async () => {
     // 1. estabelecer uma conexao e recuperar a promise
     const resposta = await fetch(url)
 
-    // 3. carregar os dados da promises
+    // 2. carregar os dados da promises
     const dados = await resposta.json()
 
     paises = dados
@@ -41,17 +21,11 @@ const carregarPaises = async () => {
 
 carregarPaises() //destructing
 
-// [["Brasil", "Argentina", "Uruguai"]] //errado
-// precisa "desestruturar" antes
-//(... ["Brasil", "Argentina", "Uruguai"]) => "Brasil", "Argentina", "Uruguai"
-
-
 /**
  * Função que filtra países por nome
  * @param {*} palavra - chave de busca
  */
 const buscarPorNome = (palavra) => {
-
     const fragMinusculo = palavra.toLowerCase()
 
     return paisesFiltrados.filter(pais => {
@@ -70,75 +44,76 @@ const buscarPorRegiao = (palavra) =>
     )
 
 
-const iptCampoBusca = document.querySelector("#campoBusca")
-
-iptCampoBusca.addEventListener("keyup", async () => {
-    //recebe a palavra de busca
-    const palavra = iptCampoBusca.value
-    
-    //chamar a função que filtra
-    paisesFiltrados = buscarPorNome(palavra)
-
-    //exibir os paises
-    exibirPaises(paisesFiltrados)
-})
-
 const ordenarPorNome = () => {
-    paisesFiltrados = paises.sort((p1, p2) => p1.name.common > p2.name.common)
+    paisesFiltrados = paisesFiltrados.sort((p1, p2) => p1.name.common > p2.name.common)
     exibirPaises(paisesFiltrados)
 }
-/*
 
-
-ordenarPorPopulacao()
-
-ordenarPorArea()
-*/
-
-
-/*
- * comandos de tela 
- */
-
-const btnOrdenarNome = document.querySelector("#btnOrdenarNome")
-const btnOrdenarPopulacao = document.querySelector("#btnOrdenarPopulacao")
-const btnOrdenarArea = document.querySelector("#btnOrdenarArea")
-const selectBuscaRegiao = document.querySelector("#filtroRegiao")
-const listaPaises = document.querySelector("#listaPaises")
-
-btnOrdenarNome.addEventListener("click", ordenarPorNome)
-
-btnOrdenarPopulacao.addEventListener("click", ()=> {
-    console.log("entrou no botao ordenar por populacao")
-})
-
-btnOrdenarArea.addEventListener("click", ()=> {
-    console.log("entrou no botao ordenar por area")
-})
-
-selectBuscaRegiao.addEventListener("click", ()=>{
-
-    paisesFiltrados = buscarPorRegiao(selectBuscaRegiao.value)
-    //carregar os paises
+const ordenarPorPopulacao = () => {
+    paisesFiltrados = paisesFiltrados.sort((p1, p2) => p1.population > p2.population)
     exibirPaises(paisesFiltrados)
-})
+}
 
+const ordenarPorArea = () => {
+    paisesFiltrados = paisesFiltrados.sort((p1, p2) => p1.area > p2.area)
+    exibirPaises(paisesFiltrados)
+}
+
+/**
+ * Função utilitária que recupera o nome do país pelo card
+ * Estrutura utilizada (se alterar a estrutura do card, precisa alterar a função):
+ * div
+ *  - h1
+ *  - h3
+ *  - p
+ *   -- strong
+ * @param {*} elemClicado 
+ * @returns string com o nome comum do país
+ */
 const recuperaNomePais = (elemClicado) => {
+    //função interna
     const buscaH3 = divPai => {
         for(elemFilho of divPai.children) {
             if(elemFilho.tagName == "H3")
                 return elemFilho.textContent 
         }
     }
+
     if(elemClicado.tagName == "DIV") return buscaH3(elemClicado)    
     else if(elemClicado.tagName == "H3" 
-            || elemClicado.tagName == "IMG" 
+            || elemClicado.tagName == "H1" 
             || elemClicado.tagName == "P") return buscaH3(elemClicado.parentNode) // elemento pai do H3
     
     else  return buscaH3(elemClicado.parentNode.parentNode) // STRONG ESTÁ A DOIS NIVEIS DO DIV
 
 }
 
+
+/**
+ * Função que exibe a lista de paises recuperados na tela
+ * @param {*} lista - relação de países que satisfaz alguma condição
+ */
+const exibirPaises = lista => {
+    const listaPaises = document.querySelector("#listaPaises")
+
+    const cards = lista.reduce((acum, pais) => {
+        const card = `<div class="pais">
+            <h1>${pais.flag}</h1>
+            <h3>${pais.name.common}</h3>
+            <p><strong>Capital:</strong> ${pais.capital}</p>
+            <p><strong>População:</strong> ${pais.population.toLocaleString()}</p>
+            </div>`
+        return acum + card
+    },"")
+    listaPaises.innerHTML = cards
+
+    exibirEstatisticas()
+}
+
+/**
+ * Função que exibe a estatísticas dos países filtrados
+ *
+ */
 const exibirEstatisticas = () => {
     const areaTotal = paisesFiltrados.reduce((acum, pais) => acum+pais.area,0)
     const populacaoTotal = paisesFiltrados.reduce((acum, pais) => acum+pais.population,0)
@@ -153,6 +128,10 @@ const exibirEstatisticas = () => {
 
 }
 
+/**
+ * Função que exibe detalhes de um país
+ * @param {*} nomePais 
+ */
 const exibirDetalhes = nomePais => {
     const pais = buscarPorNome(nomePais)[0]
     const popup = document.querySelector("#popup")
@@ -172,6 +151,28 @@ const exibirDetalhes = nomePais => {
     </div>`
 }
 
+
+//////////////////////////////////////////////////////////////////////
+//                        comandos de tela                          //
+//////////////////////////////////////////////////////////////////////
+
+const btnOrdenarNome = document.querySelector("#btnOrdenarNome")
+const btnOrdenarPopulacao = document.querySelector("#btnOrdenarPopulacao")
+const btnOrdenarArea = document.querySelector("#btnOrdenarArea")
+const iptCampoBusca = document.querySelector("#campoBusca")
+const listaPaises = document.querySelector("#listaPaises")
+const selectBuscaRegiao = document.querySelector("#filtroRegiao")
+
+btnOrdenarNome.addEventListener("click", ordenarPorNome)
+btnOrdenarPopulacao.addEventListener("click", ordenarPorPopulacao)
+btnOrdenarArea.addEventListener("click", ordenarPorArea)
+
+selectBuscaRegiao.addEventListener("click", ()=>{
+    paisesFiltrados = buscarPorRegiao(selectBuscaRegiao.value)
+    //carregar os paises
+    exibirPaises(paisesFiltrados)
+})
+
 listaPaises.addEventListener("click", (evento)=>{
     const elemHTMLClicado = evento.target 
     
@@ -181,3 +182,15 @@ listaPaises.addEventListener("click", (evento)=>{
     //console.log(nomePais)
 
 })
+
+iptCampoBusca.addEventListener("keyup", async () => {
+    //recebe a palavra de busca
+    const palavra = iptCampoBusca.value
+    
+    //chamar a função que filtra
+    paisesFiltrados = buscarPorNome(palavra)
+
+    //exibir os paises
+    exibirPaises(paisesFiltrados)
+})
+
